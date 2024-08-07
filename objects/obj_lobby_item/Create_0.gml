@@ -9,5 +9,6 @@ image_yscale = .5
 
 select_action = function() {
 	global.is_server = false; 
+	steam_lobby_join_id(lobby_id); 
 	room_goto(rm_gameroom); 
 }

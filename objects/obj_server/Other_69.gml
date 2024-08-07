@@ -60,13 +60,13 @@ var _type = async_load[?"event_type"];
 switch(_type) {
 	case "lobby_chat_update": 
 		var _from_id = async_load[?"user_id"]; //SteamID
-		var _from_name = steam_get_user_persona_name_sync(_fromID); //Steam Player Name
+		var _from_name = steam_get_user_persona_name_sync(_from_id); //Steam Player Name
 		
 		// someone enters or leaves the lobby 
 		if (async_load[? "change_flags"] & steam_lobby_member_change_entered) {
 			show_debug_message("Player Joined: " + _from_name); 			
-			insert_player(_from_id); 
-			spawn_player(_from_id); 
+			//insert_player(_from_id); 
+			//spawn_player(_from_id); 
 					
 		} else if (async_load[? "change_flags"] & steam_lobby_member_change_left) {
 			show_debug_message("Player Left: " + _fromName); 
