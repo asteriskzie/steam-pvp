@@ -8,7 +8,8 @@ function player_movement(){
 	
 	if (action_key && !is_cooldown) {
 		var _bullet = instance_create_layer(x, y, "Instances", obj_projectile);
-		_bullet.direction = image_angle; 
+		_bullet.direction = image_angle;
+		_bullet.owner = steam_id; 
 		is_cooldown = true; 
 		alarm[0] = 30; 
 	}
