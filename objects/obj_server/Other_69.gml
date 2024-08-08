@@ -19,7 +19,6 @@ function insert_player(_new_id) {
 			steam_id: 	_new_id, 
 			steam_name: _new_name, 
 			character:	undefined, 
-			death_cooldown: 0
 		}); 
 	}
 }

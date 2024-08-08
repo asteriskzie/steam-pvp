@@ -14,7 +14,6 @@ player_list[0] = {
 	steam_id: steam_id, 
 	steam_name: steam_name, 
 	character: undefined, 
-	death_cooldown: 0,
 }
 
 cnt = 0
