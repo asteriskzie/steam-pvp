@@ -6,5 +6,6 @@ is_local = (steam_id == local_steam_id);
 
 move_speed = 1; 
 is_cooldown = false; 
+death_cooldown = 0; 
 
 init_controls(); 

@@ -13,5 +13,8 @@ steam_name = steam_get_user_persona_name(steam_id);
 player_list[0] = {
 	steam_id: steam_id, 
 	steam_name: steam_name, 
-	character: undefined 
+	character: undefined, 
 }
+
+cnt = 0
+alarm[0] = room_speed

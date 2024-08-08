@@ -18,7 +18,7 @@ function insert_player(_new_id) {
 		array_push(player_list, {
 			steam_id: 	_new_id, 
 			steam_name: _new_name, 
-			character:	undefined
+			character:	undefined, 
 		}); 
 	}
 }
@@ -51,8 +51,19 @@ function spawn_player(_new_id) {
 		
 		player_list[_idx].character = _inst; 
 	} else {
-		show_debug_message("[WARNING] attempted to re-spawn existing player object"); 
+		show_debug_message("[WARNING] attempt to re-spawn existing player object"); 
 	}
+}
+
+function erase_player(_player_id) {
+	var _idx = get_list_idx(_player_id); 
+	
+	if (_idx == -1) show_debug_message("[WARNING] attempt to erase player not in the list"); 
+	else {
+		instance_destroy(player_list[_idx].character); 
+		array_delete(player_list, _idx, 1); 
+	}
+	
 }
 
 var _type = async_load[?"event_type"]; 
@@ -65,12 +76,12 @@ switch(_type) {
 		// someone enters or leaves the lobby 
 		if (async_load[? "change_flags"] & steam_lobby_member_change_entered) {
 			show_debug_message("Player Joined: " + _from_name); 			
-			//insert_player(_from_id); 
-			//spawn_player(_from_id); 
+			insert_player(_from_id); 
+			spawn_player(_from_id); 
 					
 		} else if (async_load[? "change_flags"] & steam_lobby_member_change_left) {
-			show_debug_message("Player Left: " + _fromName); 
-			
+			show_debug_message("Player Left: " + _from_name); 
+			erase_player(_from_id); 		
 		}
 	
 		break; 

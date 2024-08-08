@@ -7,5 +7,6 @@ if (is_local) {
 
 if (hp <= 0) {
 	// game over 
-	instance_destroy(); 
+	self.death_cooldown = 10;
+	instance_deactivate_object(self);	
 }
