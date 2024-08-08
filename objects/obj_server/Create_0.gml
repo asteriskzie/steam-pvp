@@ -17,4 +17,5 @@ player_list[0] = {
 	death_cooldown: 0,
 }
 
-alarm[0] = 12
+cnt = 0
+alarm[0] = room_speed

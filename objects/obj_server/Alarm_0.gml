@@ -9,5 +9,6 @@ for (var _i = 0; _i < array_length(player_list); _i++) {
 		}
 	}
 }
-
-alarm[0] = 12; 
+cnt++
+show_debug_message("alarm 0 is called cnt " + string(cnt)); 
+alarm[0] = room_speed; 
