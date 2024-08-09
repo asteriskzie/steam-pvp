@@ -43,6 +43,17 @@ while(steam_net_packet_receive()) {
 			_player_obj.image_angle = _image_angle; 
 			
 			break; 
+			
+		case PACKET.REQ_SHOT: 
+			var _steam_id = buffer_read(inbuf, buffer_u16); // TODO: nanti cek lagi u berapa 
+			var _idx = get_list_idx(_steam_id);
+			var _player_obj = player_list[_idx].character;
+			
+			with(_player_obj) {
+				spawn_bullet(); 	
+			}
+			
+			break; 
 
 		default: 
 			show_debug_message("Unrecognized packet: " + string(_type)); 

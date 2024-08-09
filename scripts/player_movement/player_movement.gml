@@ -1,5 +1,12 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
+function request_shot() {
+	var _buff = buffer_create(2, buffer_fixed, 1); //TODO: sizenya benerin ya cek lg 
+	// send id nya aja kan? 
+	buffer_write(_buff, buffer_u16, steam_id); 
+	var _host = steam_lobby_get_owner_id(); 
+	steam_net_packet_send(_host, _buff); // TODO get use id nya server 
+}
+
+///@self obj_player
 function player_movement(){
 	x += (right_key - left_key) * move_speed; 
 	y += (down_key - up_key) * move_speed; 
@@ -7,10 +14,17 @@ function player_movement(){
 	image_angle = point_direction(x, y, mouse_x, mouse_y); 
 	
 	if (action_key && !is_cooldown) {
-		var _bullet = instance_create_layer(x, y, "Instances", obj_projectile);
-		_bullet.direction = image_angle;
-		_bullet.owner = steam_id; 
-		is_cooldown = true; 
-		alarm[0] = 30; 
-	}
+		request_shot(); 
+		//spawn_bullet(); 	
+	}	
+}
+
+///@self obj_player 
+function spawn_bullet() {
+	var _bullet = instance_create_layer(x, y, "Instances", obj_projectile);
+	_bullet.direction = image_angle;
+	_bullet.owner = steam_id; 
+	is_cooldown = true; 
+	alarm[0] = 30; 
+	
 }
