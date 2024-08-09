@@ -29,7 +29,21 @@ while(steam_net_packet_receive()) {
 			}
 			
 			break; 
-		
+			
+		case PACKET.MOVE_PLAYER: 
+			var _steam_id = buffer_read(inbuf, buffer_u16); // TODO: nanti cek lagi u berapa 
+			var _x = buffer_read(inbuf, buffer_u8); 
+			var _y = buffer_read(inbuf, buffer_u8); 
+			var _image_angle = buffer_read(inbuf, buffer_u8); 
+			
+			var _idx = get_list_idx(_steam_id);
+			var _player_obj = player_list[_idx].character; 
+			_player_obj.x = _x; 
+			_player_obj.y = _y; 
+			_player_obj.image_angle = _image_angle; 
+			
+			break; 
+
 		default: 
 			show_debug_message("Unrecognized packet: " + string(_type)); 
 	}
