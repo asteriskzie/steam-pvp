@@ -16,4 +16,6 @@ player_list[0] = {
 	character: undefined, 
 }
 
+
+
 alarm[0] = room_speed
