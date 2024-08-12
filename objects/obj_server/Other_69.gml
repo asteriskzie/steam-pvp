@@ -15,10 +15,12 @@ function send_init_config(_target_id) {
 		}); 
 	}
 	
+	show_debug_message("otw bikin buffer dari server"); 
 	var _buff = buffer_create(1, buffer_grow, 1); 
 	buffer_write(_buff, buffer_u8, PACKET.INIT_CONFIG); 
 	buffer_write(_buff, buffer_string, json_stringify(_packet)); 
 	steam_net_packet_send(_target_id, _buff); 
+	buffer_delete(_buff); 
 }
 
 var _type = async_load[?"event_type"]; 

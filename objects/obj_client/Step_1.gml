@@ -8,6 +8,8 @@ while(steam_net_packet_receive()) {
 	buffer_seek(inbuf, buffer_seek_start, 0); 
 	var _type = buffer_read(inbuf, buffer_u8); 
 	
+	show_debug_message("terima buffer "+ string(_type));
+	
 	switch(_type) {
 		case PACKET.INIT_CONFIG: 
 			// salin playerlist, perlu posisi tiap character 
