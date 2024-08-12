@@ -31,6 +31,7 @@ function get_list_idx(_new_id) {
 }
 
 function spawn_player(_new_id) {
+	
 	var _idx = get_list_idx(_new_id); 
 	if (_idx == -1) {
 		_idx = array_length(player_list); 

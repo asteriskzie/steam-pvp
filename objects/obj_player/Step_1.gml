@@ -9,6 +9,7 @@ while(steam_net_packet_receive()) {
 	var _type = buffer_read(inbuf, buffer_u8); 
 	
 	switch(_type) {
+			
 		case PACKET.REQ_SHOT: 
 			var _steam_id = buffer_read(inbuff, buffer_u16);
 			
