@@ -8,8 +8,6 @@ while(steam_net_packet_receive()) {
 	buffer_seek(inbuf, buffer_seek_start, 0); 
 	var _type = buffer_read(inbuf, buffer_u8); 
 	
-	show_debug_message("terima buffer "+ string(_type));
-	
 	switch(_type) {
 		case PACKET.INIT_CONFIG: 
 			// salin playerlist, perlu posisi tiap character 
@@ -33,7 +31,7 @@ while(steam_net_packet_receive()) {
 			break; 
 			
 		case PACKET.MOVE_PLAYER: 
-			var _steam_id = buffer_read(inbuf, buffer_u16); // TODO: nanti cek lagi u berapa 
+			var _steam_id = buffer_read(inbuf, buffer_u64); 
 			var _x = buffer_read(inbuf, buffer_u8); 
 			var _y = buffer_read(inbuf, buffer_u8); 
 			var _image_angle = buffer_read(inbuf, buffer_u8); 
@@ -46,8 +44,8 @@ while(steam_net_packet_receive()) {
 			
 			break; 
 			
-		case PACKET.REQ_SHOT: 
-			var _steam_id = buffer_read(inbuf, buffer_u16); // TODO: nanti cek lagi u berapa 
+		case PACKET.DO_SHOT: 
+			var _steam_id = buffer_read(inbuf, buffer_u64); 
 			var _idx = get_list_idx(_steam_id);
 			var _player_obj = player_list[_idx].character;
 			

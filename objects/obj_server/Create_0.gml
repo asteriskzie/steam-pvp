@@ -19,3 +19,4 @@ player_list[0] = {
 
 
 alarm[0] = room_speed
+inbuf = buffer_create(16, buffer_grow, 1) 

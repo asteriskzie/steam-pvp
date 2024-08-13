@@ -30,6 +30,16 @@ function get_list_idx(_new_id) {
 	return -1; 
 }
 
+function get_player_obj_from_id(_new_id) {
+	var _idx = get_list_idx(_new_id); 
+	
+	if (player_list[_idx].character == undefined) {
+		show_debug_message("[WARNING] got undefined obj"); 
+	}
+	
+	return player_list[_idx].character; 	
+}
+
 function spawn_player(_new_id) {
 	
 	var _idx = get_list_idx(_new_id); 

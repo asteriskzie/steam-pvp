@@ -14,8 +14,7 @@ function send_init_config(_target_id) {
 			hp: _player.hp,			
 		}); 
 	}
-	
-	show_debug_message("otw bikin buffer dari server"); 
+
 	var _buff = buffer_create(1, buffer_grow, 1); 
 	buffer_write(_buff, buffer_u8, PACKET.INIT_CONFIG); 
 	buffer_write(_buff, buffer_string, json_stringify(_packet)); 
