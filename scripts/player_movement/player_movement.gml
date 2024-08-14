@@ -7,18 +7,23 @@ function request_shot() {
 	buffer_delete(_buff); 
 }
 
-function request_movement(_x, _y, _ang) {
+function request_movement(_dx, _dy, _ang) {
 	var _host = steam_lobby_get_owner_id(); 
-	send_movement_buffer(_host, _x, _y, _ang); 
+	send_movement_buffer(_host, _dx, _dy, _ang); 
 }
 
 ///@self obj_player
 function player_movement(){
-	x += (right_key - left_key) * move_speed; 
-	y += (down_key - up_key) * move_speed; 
-	image_angle = point_direction(x, y, mouse_x, mouse_y);
+	var _dx = (right_key - left_key) * move_speed; 
+	var _dy = (down_key - up_key) * move_speed; 
+	var _dang = point_direction(x, y, mouse_x, mouse_y) - image_angle; 
 	
-	request_movement(x, y, image_angle); 
+	if (_dx != 0 || _dy != 0 || _dang > 0 || _dang < 0) {
+		x += _dx; 
+		y += _dy; 
+		image_angle += _dang; 
+		request_movement(_dx, _dy, image_angle); 
+	}
 	
 	if (action_key && !is_cooldown) {
 		request_shot(); 	
