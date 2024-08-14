@@ -5,5 +5,6 @@ enum PACKET {
 	MOVE_PLAYER = 98, 
 	REQ_SHOT = 97, 
 	DO_SHOT = 96, 
+	REQ_MOVEMENT = 95
 	// TODO: spawn player jgn lupa, utk > 2 players
 }

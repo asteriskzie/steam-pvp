@@ -50,6 +50,7 @@
     {"id":{"name":"obj_server","path":"objects/obj_server/obj_server.yy",},},
     {"id":{"name":"rm_gameroom","path":"rooms/rm_gameroom/rm_gameroom.yy",},},
     {"id":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},},
+    {"id":{"name":"buffers","path":"scripts/buffers/buffers.yy",},},
     {"id":{"name":"input","path":"scripts/input/input.yy",},},
     {"id":{"name":"lobby_management","path":"scripts/lobby_management/lobby_management.yy",},},
     {"id":{"name":"packet","path":"scripts/packet/packet.yy",},},
