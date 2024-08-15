@@ -2,7 +2,7 @@
 // You can write your code in this editor
 
 while(steam_net_packet_receive()) {	
-	var _sender = steam_net_packet_get_sender_id();
+	var _sender_id = steam_net_packet_get_sender_id();
 	
 	steam_net_packet_get_data(inbuf);	
 	buffer_seek(inbuf, buffer_seek_start, 0); 
@@ -31,13 +31,12 @@ while(steam_net_packet_receive()) {
 			break; 
 			
 		case PACKET.DO_MOVE: 
-		{
-			var _steam_id = buffer_read(inbuf, buffer_u64); 
+		{			
 			var _dx = buffer_read(inbuf, buffer_s16); 
 			var _dy = buffer_read(inbuf, buffer_s16); 
 			var _ang = buffer_read(inbuf, buffer_f16); 
 			
-			var _idx = get_list_idx(_steam_id);
+			var _idx = get_list_idx(_sender_id);
 			var _player_obj = player_list[_idx].character;
 			
 			

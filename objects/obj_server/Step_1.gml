@@ -49,7 +49,7 @@ while(steam_net_packet_receive()) {
 			var _dy = buffer_read(inbuf, buffer_s8); 
 			var _ang = buffer_read(inbuf, buffer_f16); 
 			
-			show_debug_message("Got movement req from "+ steam_get_user_persona_name_sync(_player_id) + " || " + string(_dx) + " " + string(_dy) +" " +  string(_ang)); 
+			show_debug_message("Got movement req from "+ steam_get_user_persona_name_sync(_sender_id) + " || " + string(_dx) + " " + string(_dy) +" " +  string(_ang)); 
 			
 			_player_obj.x += _dx; 
 			_player_obj.y += _dy; 
