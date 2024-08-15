@@ -28,7 +28,7 @@ function send_req_shot_buffer(_target) {
 
 function send_do_shot_buffer(_target, _shooter) {
 	var _buff = buffer_create(9, buffer_fixed, 1); 
-	buffer_write(_buff, buffer_u8, PACKET.REQ_SHOT);
+	buffer_write(_buff, buffer_u8, PACKET.DO_SHOT);
 	buffer_write(_buff, buffer_u64, _shooter);  
 	steam_net_packet_send(_target, _buff);
 	buffer_delete(_buff); 

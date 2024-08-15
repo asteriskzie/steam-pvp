@@ -1,12 +1,12 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-function broadcast_do_shot(_exclude) {
+function broadcast_do_shot(_exclude, _shooter) {
 	// broadcast ke semua kecuali yang diexclude 
 	for (var _i = 0; _i < array_length(player_list); _i++) {
 		if(!array_contains(_exclude, player_list[_i].steam_id)){
 			show_debug_message("[DEBUG] sending shot buffer to " + steam_get_user_persona_name_sync(player_list[_i].steam_id)); 
-			send_do_shot_buffer(player_list[_i].steam_id); 
+			send_do_shot_buffer(player_list[_i].steam_id, _shooter); 
 		} 
 	}
 }
@@ -43,7 +43,7 @@ while(steam_net_packet_receive()) {
 				spawn_bullet(); 
 			}
 			
-			broadcast_do_shot([steam_id]); // TODO: nanti tambahin _sende_id ke esclude
+			broadcast_do_shot([steam_id], _shooter_id); // TODO: nanti tambahin _sende_id ke esclude
 			
 			break; 
 		}
