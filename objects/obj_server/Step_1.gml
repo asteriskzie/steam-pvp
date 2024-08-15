@@ -43,7 +43,6 @@ while(steam_net_packet_receive()) {
 		}
 		case PACKET.REQ_MOVE: 
 		{
-			//var _player_id = buffer_read(inbuf, buffer_u64); // TODO: ini bs pake sender id aja?
 			var _player_obj = get_player_obj_from_id(_sender_id); 			
 			var _dx = buffer_read(inbuf, buffer_s8); 
 			var _dy = buffer_read(inbuf, buffer_s8); 
