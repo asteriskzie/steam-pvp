@@ -16,12 +16,12 @@ function request_movement(_dx, _dy, _ang) {
 function player_movement(){
 	var _dx = (right_key - left_key) * move_speed; 
 	var _dy = (down_key - up_key) * move_speed; 
-	var _dang = point_direction(x, y, mouse_x, mouse_y) - image_angle; 
+	var _dang = angle_difference(point_direction(x, y, mouse_x, mouse_y), image_angle); 
 	
-	if (_dx != 0 || _dy != 0 || _dang > 0 || _dang < 0) {
+	if (_dx != 0 || _dy != 0 || _dang > 1 || _dang < -1) {		
 		x += _dx; 
 		y += _dy; 
-		image_angle += _dang; 
+		image_angle = point_direction(x, y, mouse_x, mouse_y); 
 		request_movement(_dx, _dy, image_angle); 
 	}
 	
