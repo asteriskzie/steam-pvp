@@ -1,10 +1,6 @@
-function request_shot() {
-	var _buff = buffer_create(9, buffer_fixed, 1); 
-	buffer_write(_buff, buffer_u8, PACKET.REQ_SHOT); 
-	buffer_write(_buff, buffer_u64, steam_id); 
-	var _host = steam_lobby_get_owner_id(); 
-	steam_net_packet_send(_host, _buff); // TODO: get use id nya server (mungkin bs disimpen di variable)
-	buffer_delete(_buff); 
+function request_shot() {	
+	var _host = steam_lobby_get_owner_id();
+	send_req_shot_buffer(_host);
 }
 
 function request_movement(_dx, _dy, _ang) {
@@ -27,7 +23,7 @@ function player_movement(){
 	
 	if (action_key && !is_cooldown) {
 		request_shot(); 	
-		//spawn_bullet();
+		//spawn_bullet(); // TODO: after everything works fine, uncomment this
 	}	
 }
 

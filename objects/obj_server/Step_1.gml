@@ -1,7 +1,14 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-function broadcast_do_shot() {
+function broadcast_do_shot(_exclude) {
+	// broadcast ke semua kecuali yang diexclude 
+	for (var _i = 0; _i < array_length(player_list); _i++) {
+		if(!array_contains(_exclude, player_list[_i].steam_id)){
+			show_debug_message("[DEBUG] sending shot buffer to " + steam_get_user_persona_name_sync(player_list[_i].steam_id)); 
+			send_do_shot_buffer(player_list[_i].steam_id); 
+		} 
+	}
 }
 
 function broadcast_do_movement(_exclude, _dx, _dy, _ang) {
@@ -24,8 +31,7 @@ while(steam_net_packet_receive()) {
 	switch(_type) {
 		case PACKET.REQ_SHOT: 
 		{
-			var _shooter_id = buffer_read(inbuf, buffer_u64); 
-			
+			var _shooter_id = _sender_id; 
 			// DEBUG 
 			var _shooter_name = steam_get_user_persona_name_sync(_shooter_id); 
 			show_debug_message("Got shot request from " + _shooter_name); 
@@ -37,7 +43,7 @@ while(steam_net_packet_receive()) {
 				spawn_bullet(); 
 			}
 			
-			broadcast_do_shot(); // TODO: send shot request to all client, kecuali requester? biar requester langsung aja 
+			broadcast_do_shot([steam_id]); // TODO: nanti tambahin _sende_id ke esclude
 			
 			break; 
 		}
@@ -47,8 +53,6 @@ while(steam_net_packet_receive()) {
 			var _dx = buffer_read(inbuf, buffer_s8); 
 			var _dy = buffer_read(inbuf, buffer_s8); 
 			var _ang = buffer_read(inbuf, buffer_f16); 
-			
-			show_debug_message("Got movement req from "+ steam_get_user_persona_name_sync(_sender_id) + " || " + string(_dx) + " " + string(_dy) +" " +  string(_ang)); 
 			
 			_player_obj.x += _dx; 
 			_player_obj.y += _dy; 

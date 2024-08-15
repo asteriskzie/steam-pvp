@@ -40,8 +40,6 @@ while(steam_net_packet_receive()) {
 			var _idx = get_list_idx(_steam_id);
 			var _player_obj = player_list[_idx].character;
 			
-			show_debug_message("Disuruh pindah "); 
-			
 			_player_obj.x += _dx; 
 			_player_obj.y += _dy; 
 			_player_obj.image_angle = _ang; 
