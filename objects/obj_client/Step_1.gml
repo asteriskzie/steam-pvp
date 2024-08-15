@@ -33,8 +33,8 @@ while(steam_net_packet_receive()) {
 		case PACKET.DO_MOVE: 
 		{	
 			var _steam_id = buffer_read(inbuf, buffer_u64); 
-			var _dx = buffer_read(inbuf, buffer_s16); 
-			var _dy = buffer_read(inbuf, buffer_s16); 
+			var _dx = buffer_read(inbuf, buffer_s8); 
+			var _dy = buffer_read(inbuf, buffer_s8); 
 			var _ang = buffer_read(inbuf, buffer_f16); 
 			
 			var _idx = get_list_idx(_steam_id);
