@@ -15,7 +15,7 @@ function broadcast_do_movement(_exclude, _dx, _dy, _ang) {
 }
 
 while(steam_net_packet_receive()) {	
-	var _sender = steam_net_packet_get_sender_id();
+	var _sender_id = steam_net_packet_get_sender_id();
 	
 	steam_net_packet_get_data(inbuf);	
 	buffer_seek(inbuf, buffer_seek_start, 0); 
@@ -43,20 +43,19 @@ while(steam_net_packet_receive()) {
 		}
 		case PACKET.REQ_MOVE: 
 		{
-			var _player_id = buffer_read(inbuf, buffer_u64); // TODO: ini bs pake sender id aja?
-			var _player_obj = get_player_obj_from_id(_player_id); 
-			
+			//var _player_id = buffer_read(inbuf, buffer_u64); // TODO: ini bs pake sender id aja?
+			var _player_obj = get_player_obj_from_id(_sender_id); 			
 			var _dx = buffer_read(inbuf, buffer_s8); 
 			var _dy = buffer_read(inbuf, buffer_s8); 
 			var _ang = buffer_read(inbuf, buffer_f16); 
 			
-			//show_debug_message("Got movement req from "+ steam_get_user_persona_name_sync(_player_id) + " || " + string(_dx) + " " + string(_dy) +" " +  string(_ang)); 
+			show_debug_message("Got movement req from "+ steam_get_user_persona_name_sync(_player_id) + " || " + string(_dx) + " " + string(_dy) +" " +  string(_ang)); 
 			
 			_player_obj.x += _dx; 
 			_player_obj.y += _dy; 
 			_player_obj.image_angle = _ang; 
 			
-			broadcast_do_movement([_player_id, steam_id], _dx, _dy, _ang); 
+			broadcast_do_movement([_sender_id, steam_id], _dx, _dy, _ang); 
 			
 			break; 
 		}

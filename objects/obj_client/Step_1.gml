@@ -33,12 +33,14 @@ while(steam_net_packet_receive()) {
 		case PACKET.DO_MOVE: 
 		{
 			var _steam_id = buffer_read(inbuf, buffer_u64); 
-			var _dx = buffer_read(inbuf, buffer_u16); 
-			var _dy = buffer_read(inbuf, buffer_u16); 
+			var _dx = buffer_read(inbuf, buffer_s16); 
+			var _dy = buffer_read(inbuf, buffer_s16); 
 			var _ang = buffer_read(inbuf, buffer_f16); 
 			
 			var _idx = get_list_idx(_steam_id);
-			var _player_obj = player_list[_idx].character; 
+			var _player_obj = player_list[_idx].character;
+			
+			
 			_player_obj.x += _dx; 
 			_player_obj.y += _dy; 
 			_player_obj.image_angle = _ang; 
