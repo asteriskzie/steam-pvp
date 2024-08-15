@@ -8,7 +8,8 @@ function broadcast_do_movement(_exclude, _dx, _dy, _ang) {
 	// broadcast ke semua kecuali yang diexclude 
 	for (var _i = 0; _i < array_length(player_list); _i++) {
 		if(!array_contains(_exclude, player_list[_i].steam_id)){
-			send_movement_buffer(player_list[_i].steam_id, _dx, _dy, _ang); 
+			show_debug_message("[DEBUG] sending movement buffer to " + steam_get_user_persona_name_sync(player_list[_i].steam_id)); 
+			send_do_move_buffer(player_list[_i].steam_id, _dx, _dy, _ang); 
 		} 
 	}
 }
@@ -40,7 +41,7 @@ while(steam_net_packet_receive()) {
 			
 			break; 
 		}
-		case PACKET.REQ_MOVEMENT: 
+		case PACKET.REQ_MOVE: 
 		{
 			var _player_id = buffer_read(inbuf, buffer_u64); // TODO: ini bs pake sender id aja?
 			var _player_obj = get_player_obj_from_id(_player_id); 

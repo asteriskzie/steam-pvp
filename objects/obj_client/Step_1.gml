@@ -30,7 +30,7 @@ while(steam_net_packet_receive()) {
 			
 			break; 
 			
-		case PACKET.MOVE_PLAYER: 
+		case PACKET.DO_MOVE: 
 		{
 			var _steam_id = buffer_read(inbuf, buffer_u64); 
 			var _dx = buffer_read(inbuf, buffer_u16); 
