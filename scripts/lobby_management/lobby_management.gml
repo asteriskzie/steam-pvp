@@ -49,14 +49,15 @@ function spawn_player(_new_id) {
 	}
 	
 	if (player_list[_idx].character == undefined) {
-		var _x = random_range(1, room_width-1); 
-		var _y = random_range(1, room_height-1); 
+		var _x = room_width/2; 
+		var _y = room_height/2; 
 		var _layer = layer_get_id("Instances"); 		
 		var _inst = instance_create_layer(_x, _y, _layer, obj_player, {
 			steam_id: _new_id
 		}); 
 		
 		player_list[_idx].character = _inst; 
+		
 	} else {
 		show_debug_message("[WARNING] attempt to re-spawn existing player object"); 
 	}
@@ -71,4 +72,10 @@ function erase_player(_player_id) {
 		array_delete(player_list, _idx, 1); 
 	}
 	
+}
+
+function spawn_enemy(_x) {
+	var _layer = layer_get_id("Instances"); 
+	var _inst = instance_create_layer(_x, -20, _layer, obj_enemy, {});
+	return _inst; 
 }

@@ -1,5 +1,4 @@
-/// @description Insert description here
-// You can write your code in this editor
+/// @description Receive and send buffers
 
 function broadcast_do_shot(_exclude, _shooter) {
 	// broadcast ke semua kecuali yang diexclude 

@@ -42,6 +42,7 @@
     {"id":{"name":"obj_button_join","path":"objects/obj_button_join/obj_button_join.yy",},},
     {"id":{"name":"obj_button","path":"objects/obj_button/obj_button.yy",},},
     {"id":{"name":"obj_client","path":"objects/obj_client/obj_client.yy",},},
+    {"id":{"name":"obj_enemy","path":"objects/obj_enemy/obj_enemy.yy",},},
     {"id":{"name":"obj_game","path":"objects/obj_game/obj_game.yy",},},
     {"id":{"name":"obj_lobby_item","path":"objects/obj_lobby_item/obj_lobby_item.yy",},},
     {"id":{"name":"obj_lobby_list","path":"objects/obj_lobby_list/obj_lobby_list.yy",},},

@@ -4,5 +4,5 @@
 event_inherited(); 
 
 select_action = function () {
-	steam_lobby_create(steam_lobby_type_public, 2); 
+	steam_lobby_create(steam_lobby_type_public, 4); 
 }
