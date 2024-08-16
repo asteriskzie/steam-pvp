@@ -32,18 +32,13 @@ while(steam_net_packet_receive()) {
 		case PACKET.REQ_SHOT: 
 		{
 			var _shooter_id = _sender_id; 
-			// DEBUG 
-			var _shooter_name = steam_get_user_persona_name_sync(_shooter_id); 
-			show_debug_message("Got shot request from " + _shooter_name); 
-			// EOD
-			
 			var _player_obj = get_player_obj_from_id(_shooter_id);
 			
 			with(_player_obj) { 
 				spawn_bullet(); 
 			}
 			
-			broadcast_do_shot([steam_id], _shooter_id); // TODO: nanti tambahin _sende_id ke esclude
+			broadcast_do_shot([steam_id], _shooter_id);
 			
 			break; 
 		}
