@@ -22,10 +22,10 @@ function send_init_config(_target_id) {
 	buffer_delete(_buff); 
 }
 
-function broadcast_spawn_player(_exclude, _new_player) {
+function broadcast_spawn_player(_exclude, _new_id) {
 	for (var _i = 0; _i < array_lengh(player_list); _i++) {
 		if (!array_contains(_exclude, player_list[_i].steam_id)) {
-			send_spawn_player(player_list[_i].steam_id, _new_player); 
+			send_spawn_player(player_list[_i].steam_id, _new_id); 
 		}
 	}
 }
@@ -46,12 +46,7 @@ switch(_type) {
 			send_init_config(_from_id);
 			
 			var _player_obj = get_player_obj_from_id(_from_id);
-			broadcast_spawn_player([steam_id, _from_id], {
-				steam_id: _from_id, 
-				x: _player_obj.character.x,
-				y: _player_obj.character.y,
-				image_angle: _player_obj.character.image_angle
-			}); 
+			broadcast_spawn_player([steam_id, _from_id], _from_id); 
 					
 		} else if (async_load[? "change_flags"] & steam_lobby_member_change_left) {
 			show_debug_message("Player Left: " + _from_name); 
