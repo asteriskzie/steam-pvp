@@ -1,16 +1,37 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
+function request_shot() {	
+	var _host = steam_lobby_get_owner_id();
+	send_req_shot_buffer(_host);
+}
+
+function request_movement(_dx, _dy, _ang) {
+	var _host = steam_lobby_get_owner_id(); 
+	send_req_move_buffer(_host, _dx, _dy, _ang); 
+}
+
+///@self obj_player
 function player_movement(){
-	x += (right_key - left_key) * move_speed; 
-	y += (down_key - up_key) * move_speed; 
+	var _dx = (right_key - left_key) * move_speed; 
+	var _dy = (down_key - up_key) * move_speed; 
+	var _dang = angle_difference(point_direction(x, y, mouse_x, mouse_y), image_angle); 
 	
-	image_angle = point_direction(x, y, mouse_x, mouse_y); 
+	if (_dx != 0 || _dy != 0 || _dang > 1 || _dang < -1) {		
+		x += _dx; 
+		y += _dy; 
+		image_angle = point_direction(x, y, mouse_x, mouse_y); 
+		request_movement(_dx, _dy, image_angle); 
+	}
 	
 	if (action_key && !is_cooldown) {
-		var _bullet = instance_create_layer(x, y, "Instances", obj_projectile);
-		_bullet.direction = image_angle;
-		_bullet.owner = steam_id; 
-		is_cooldown = true; 
-		alarm[0] = 30; 
-	}
+		request_shot(); 	
+		//spawn_bullet(); // TODO: after everything works fine, uncomment this
+	}	
+}
+
+///@self obj_player 
+function spawn_bullet() {
+	var _bullet = instance_create_layer(x, y, "Instances", obj_projectile);
+	_bullet.direction = image_angle;
+	_bullet.owner = steam_id; 
+	is_cooldown = true; 
+	alarm[0] = 30; 
 }
