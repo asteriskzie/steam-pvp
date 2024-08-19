@@ -3,9 +3,9 @@ function request_shot() {
 	send_req_shot_buffer(_host);
 }
 
-function request_movement(_dx, _dy, _ang) {
+function request_movement(_x, _y, _ang) {
 	var _host = steam_lobby_get_owner_id(); 
-	send_req_move_buffer(_host, _dx, _dy, _ang); 
+	send_req_move_buffer(_host, _x, _y, _ang); 
 }
 
 ///@self obj_player
