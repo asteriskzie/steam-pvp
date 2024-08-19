@@ -26,3 +26,5 @@ alarm[1] = room_speed * 5
 enemy_to_spawn = 5; 
 enemy_to_kill = enemy_to_spawn; 
 win = false; 
+
+audio_play_sound(snd_bg, 0, 1); 
