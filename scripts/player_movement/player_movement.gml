@@ -18,7 +18,7 @@ function player_movement(){
 		x += _dx; 
 		y += _dy; 
 		image_angle = point_direction(x, y, mouse_x, mouse_y); 
-		request_movement(_dx, _dy, image_angle); 
+		request_movement(x, y, image_angle); 
 	}
 	
 	if (action_key && !is_cooldown) {

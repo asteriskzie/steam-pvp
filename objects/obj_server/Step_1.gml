@@ -10,12 +10,12 @@ function broadcast_do_shot(_exclude, _shooter) {
 	}
 }
 
-function broadcast_do_movement(_exclude, _dx, _dy, _ang) {
+function broadcast_do_movement(_exclude, _x, _y, _ang) {
 	// broadcast ke semua kecuali yang diexclude 
 	for (var _i = 0; _i < array_length(player_list); _i++) {
 		if(!array_contains(_exclude, player_list[_i].steam_id)){
 			show_debug_message("[DEBUG] sending movement buffer to " + steam_get_user_persona_name_sync(player_list[_i].steam_id)); 
-			send_do_move_buffer(player_list[_i].steam_id, _dx, _dy, _ang); 
+			send_do_move_buffer(player_list[_i].steam_id, _x, _y, _ang); 
 		} 
 	}
 }
@@ -44,15 +44,15 @@ while(steam_net_packet_receive()) {
 		case PACKET.REQ_MOVE: 
 		{
 			var _player_obj = get_player_obj_from_id(_sender_id); 			
-			var _dx = buffer_read(inbuf, buffer_s8); 
-			var _dy = buffer_read(inbuf, buffer_s8); 
+			var _x = buffer_read(inbuf, buffer_u16); 
+			var _y = buffer_read(inbuf, buffer_u16); 
 			var _ang = buffer_read(inbuf, buffer_f16); 
 			
-			_player_obj.x += _dx; 
-			_player_obj.y += _dy; 
+			_player_obj.x = _x; 
+			_player_obj.y = _y; 
 			_player_obj.image_angle = _ang; 
 			
-			broadcast_do_movement([_sender_id, steam_id], _dx, _dy, _ang); 
+			broadcast_do_movement([_sender_id, steam_id], _x, _y, _ang); 
 			
 			break; 
 		}
