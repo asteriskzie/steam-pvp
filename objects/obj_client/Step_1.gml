@@ -40,10 +40,12 @@ while(steam_net_packet_receive()) {
 			var _idx = get_list_idx(_steam_id);
 			var _player_obj = player_list[_idx].character;
 			
-			_player_obj.x = _x; 
-			_player_obj.y = _y; 
-			_player_obj.image_angle = _ang; 
-			
+			with (_player_obj) {
+				x = _x; 
+				y = _y; 
+				image_angle = _ang; 
+			}
+						
 			break; 
 		}
 		case PACKET.DO_SHOT: 
