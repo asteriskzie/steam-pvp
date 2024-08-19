@@ -65,13 +65,18 @@ while(steam_net_packet_receive()) {
 			var _steam_id = buffer_read(inbuf, buffer_u64);
 			insert_player(_steam_id); 
 			spawn_player(_steam_id); 
+			break; 
 		}
 		case PACKET.SPAWN_ENEMY:
 		{
 			var _x = buffer_read(inbuf, buffer_u16);
 			spawn_enemy(_x); 
+			break; 
 		}
-		
+		case PACKET.WIN: 
+		{
+			win = true; 
+		}				
 		default: 
 			show_debug_message("Unrecognized packet: " + string(_type)); 
 	}
