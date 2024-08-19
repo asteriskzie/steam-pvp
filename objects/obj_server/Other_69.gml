@@ -1,4 +1,4 @@
-/// @description Insert description here
+/// @description Steam buffers thingy
 // You can write your code in this editor
 
 function send_init_config(_target_id) {

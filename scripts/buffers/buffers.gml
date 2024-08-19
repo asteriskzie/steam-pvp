@@ -50,3 +50,10 @@ function send_spawn_enemy(_target, _x) {
 	steam_net_packet_send(_target, _buff);
 	buffer_delete(_buff); 
 }
+
+function send_win(_target) {
+	var _buff = buffer_create(1, buffer_fixed, 1);
+	buffer_write(_buff, buffer_u8, PACKET.WIN);
+	steam_net_packet_send(_target, _buff);
+	buffer_delete(_buff); 
+}

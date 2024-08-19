@@ -7,5 +7,6 @@ enum PACKET {
 	DO_SHOT = 96, 
 	REQ_MOVE = 95, 
 	SPAWN_PLAYER = 94,
-	SPAWN_ENEMY = 93
+	SPAWN_ENEMY = 93, 
+	WIN = 92
 }
