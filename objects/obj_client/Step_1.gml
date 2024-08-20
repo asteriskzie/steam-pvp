@@ -76,6 +76,7 @@ while(steam_net_packet_receive()) {
 		case PACKET.WIN: 
 		{
 			win = true; 
+			break; 
 		}				
 		default: 
 			show_debug_message("Unrecognized packet: " + string(_type)); 

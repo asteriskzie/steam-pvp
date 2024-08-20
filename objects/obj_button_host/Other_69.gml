@@ -3,7 +3,7 @@
 
 switch(async_load[?"event_type"]) {
 	case "lobby_created": 
-		show_debug_message("Lobby created"); 
+		show_debug_message("Lobby created"); 		
 		steam_lobby_join_id(steam_lobby_get_lobby_id()); 
 		break; 
 		
@@ -14,7 +14,7 @@ switch(async_load[?"event_type"]) {
 				steam_lobby_set_data("isGameMakerTest", "true"); 
 				steam_lobby_set_data("Creator", steam_get_persona_name());  
 		}	
-		// is this a good practice?
+		
 		global.is_server = true; 
 		room_goto(rm_gameroom); 
 		

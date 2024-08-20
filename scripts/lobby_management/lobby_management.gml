@@ -76,6 +76,7 @@ function erase_player(_player_id) {
 
 function spawn_enemy(_x) {
 	var _layer = layer_get_id("Instances"); 
+	// TODO: tergantung active atau engga bos 
 	var _inst = instance_create_layer(_x, -20, _layer, obj_enemy, {});
 	return _inst; 
 }
