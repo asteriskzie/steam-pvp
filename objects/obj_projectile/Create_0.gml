@@ -3,3 +3,5 @@
 
 speed = 5; 
 direction = 0; 
+
+audio_play_sound(snd_gunshot, 1, 0)

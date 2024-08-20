@@ -1,4 +1,4 @@
-/// @description Insert description here
+/// @description Steam buffers thingy
 // You can write your code in this editor
 
 function send_init_config(_target_id) {
@@ -22,6 +22,14 @@ function send_init_config(_target_id) {
 	buffer_delete(_buff); 
 }
 
+//function broadcast_spawn_player(_exclude, _new_id) {
+//	for (var _i = 0; _i < array_length(player_list); _i++) {
+//		if (!array_contains(_exclude, player_list[_i].steam_id)) {
+//			send_spawn_player(player_list[_i].steam_id, _new_id); 
+//		}
+//	}
+//}
+
 var _type = async_load[?"event_type"]; 
 
 switch(_type) {
@@ -35,7 +43,10 @@ switch(_type) {
 			insert_player(_from_id); 
 			spawn_player(_from_id); 
 			
-			send_init_config(_from_id); 
+			send_init_config(_from_id);
+			
+			//var _player_obj = get_player_obj_from_id(_from_id);
+			//broadcast_spawn_player([steam_id, _from_id], _from_id); 
 					
 		} else if (async_load[? "change_flags"] & steam_lobby_member_change_left) {
 			show_debug_message("Player Left: " + _from_name); 

@@ -1,4 +1,4 @@
-/// @description Insert description here
+/// @description Manage death cooldown 
 // You can write your code in this editor
 for (var _i = 0; _i < array_length(player_list); _i++) {
 	if (player_list[_i].character.death_cooldown != 0) {

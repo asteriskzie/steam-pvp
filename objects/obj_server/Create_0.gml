@@ -20,3 +20,11 @@ player_list[0] = {
 
 alarm[0] = room_speed
 inbuf = buffer_create(16, buffer_grow, 1) 
+
+// spawn enemy 
+alarm[1] = room_speed * 5
+enemy_to_spawn = 5; 
+enemy_to_kill = enemy_to_spawn; 
+win = false; 
+
+audio_play_sound(snd_bg, 0, 1); 
